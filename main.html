@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Tyler Xvatayka</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    #timer-box, #score-box {
+      position: fixed;
+      top: 10px;
+      font-size: 24px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    #timer-box {
+      right: 10px;
+    }
+
+    #score-box {
+      left: 10px;
+      color: yellow;
+    }
+
+    .background-image img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    #image-container {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #image {
+      width: 100px;
+      height: auto;
+      position: relative;
+      transition: left 0.1s ease;
+    }
+
+    .falling-image {
+      position: absolute;
+      top: -100px;
+      width: 80px;
+      height: auto;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .arrow {
+      font-size: 48px;
+      color: white;
+      margin: 0 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .arrow:hover {
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timer-box">30</div>
+  <div id="score-box">0</div>
+
+  <div class="background-image">
+    <img src="https://img.freepik.com/free-vector/pixel-rain-abstract-background_23-2148370435.jpg?semt=ais_hybrid&w=740" alt="Background">
+  </div>
+
+  <div id="image-container">
+    <img src="https://i.ibb.co/7d6qYHBm/result-2025-05-02-T195235-863.png" id="image" alt="Player">
+  </div>
+
+  <div class="controls">
+    <span class="arrow" id="left-arrow">&#8592;</span>
+    <span class="arrow" id="right-arrow">&#8594;</span>
+  </div>
+
+  <script>
+  const savedImage = localStorage.getItem('selectedImage');
+    if (savedImage) {
+      document.getElementById('image').src = savedImage;
+    }
+    const player = document.getElementById('image');
+    const container = document.getElementById('image-container');
+    const scoreBox = document.getElementById('score-box');
+    const timerBox = document.getElementById('timer-box');
+
+    let score = 0;
+    let timeLeft = 30;
+    let fallInterval, collisionInterval, timerInterval;
+
+    const imageSources = [
+      'https://i.ibb.co/PZJ79DyP/result-2025-05-02-T214836-114.png',
+      'https://i.ibb.co/nq6TJWPY/result-2025-05-02-T214824-146.png',
+      'https://i.ibb.co/SDRV0NvR/result-2025-05-02-T214622-842.png',
+      'https://i.ibb.co/mVjbsNjP/result-2025-05-02-T214809-961.png',
+      'https://i.ibb.co/vC6TF49N/result-2025-05-02-T214711-338.png',
+      'https://i.ibb.co/FbcjnPvZ/result-2025-05-02-T214752-153.png',
+      'https://i.ibb.co/nMFPYBmR/result-2025-05-02-T214658-042.png',
+      'https://i.ibb.co/CpBf5ZHf/result-2025-05-02-T214734-427.png',
+      'https://i.ibb.co/vxcGVKG6/result-2025-05-02-T214644-650.png',
+      'https://i.ibb.co/KcN33TbV/result-2025-05-02-T214606-827.png',
+      'https://i.ibb.co/dwfT3RgY/result-2025-05-02-T214548-251.png'
+    ];
+
+    const imageValues = {
+      '214836-114': 10000,
+      '214824-146': 500,
+      '214622-842': 500,
+      '214809-961': 100,
+      '214711-338': 10000,
+      '214752-153': 100,
+      '214658-042': 1000,
+      '214734-427': 500,
+      '214644-650': 5000,
+      '214606-827': 5000,
+      '214548-251': 5000
+    };
+
+    function getImageValue(src) {
+      for (let key in imageValues) {
+        if (src.includes(key)) return imageValues[key];
+      }
+      return 0;
+    }
+
+    function movePlayer(direction) {
+      const step = 50;
+      const currentLeft = container.offsetLeft;
+      const maxLeft = window.innerWidth - 100;
+
+      if (direction === 'left') {
+        container.style.left = Math.max(0, currentLeft - step) + 'px';
+        player.style.transform = 'scaleX(1)';
+      } else {
+        container.style.left = Math.min(maxLeft, currentLeft + step) + 'px';
+        player.style.transform = 'scaleX(-1)';
+      }
+    }
+
+    document.getElementById('left-arrow').onclick = () => movePlayer('left');
+    document.getElementById('right-arrow').onclick = () => movePlayer('right');
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') movePlayer('left');
+      if (e.key === 'ArrowRight') movePlayer('right');
+    });
+
+    function spawnFallingImage() {
+      const src = imageSources[Math.floor(Math.random() * imageSources.length)];
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'falling-image';
+      img.style.left = Math.random() * (window.innerWidth - 80) + 'px';
+      img.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(img);
+
+      img.addEventListener('animationend', () => {
+        img.remove();
+      });
+    }
+
+    function checkCollisions() {
+      const playerRect = player.getBoundingClientRect();
+      document.querySelectorAll('.falling-image').forEach(img => {
+        const rect = img.getBoundingClientRect();
+        if (
+          rect.bottom > playerRect.top &&
+          rect.top < playerRect.bottom &&
+          rect.left < playerRect.right &&
+          rect.right > playerRect.left
+        ) {
+          score += getImageValue(img.src);
+          scoreBox.textContent = score;
+          img.remove();
+        }
+      });
+    }
+
+    function startGame() {
+      fallInterval = setInterval(spawnFallingImage, 1000);
+      collisionInterval = setInterval(checkCollisions, 100);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerBox.textContent = timeLeft;
+        if (timeLeft <= 0) endGame();
+      }, 1000);
+    }
+
+    function endGame() {
+      clearInterval(fallInterval);
+      clearInterval(collisionInterval);
+      clearInterval(timerInterval);
+
+      localStorage.setItem('lastScore', score);
+      const total = parseInt(localStorage.getItem('totalScore') || '0', 10);
+      localStorage.setItem('totalScore', total + score);
+
+      window.location.href = 'over.html';
+    }
+
+    // старт после загрузки
+    window.onload = () => {
+      container.style.left = (window.innerWidth / 2 - 50) + 'px';
+      startGame();
+    };
+  </script>
+</body>
+</html>

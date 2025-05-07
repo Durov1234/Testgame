@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #3b1a69, #4b1773, #6e1b3e, #26086e);
+      background-size: 400% 370%;
+      animation: gradientFlow 35s ease infinite;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #Tyler {
+      position: absolute;
+      top: 550px;
+      left: 160px;
+      font-family: sans-serif;
+      font-size: 160px;
+      color: white;
+    }
+    #creator {
+      position: absolute;
+      top: 535px;
+      left: 760px;
+      font-family: sans-serif;
+      font-size: 50px;
+      color: white;
+    }
+    #Name {
+      position: absolute;
+      top: 10px;
+      left: 705px;
+      font-family: sans-serif;
+      font-size: 70px;
+      color: white;
+    }
+    #creatorname {
+      position: absolute;
+      top: 550px;
+      left: 960px;
+      font-family: sans-serif;
+      font-size: 40px;
+      color: white;
+    }
+    #store_menu, #newgame_menu {
+      font-family: sans-serif;
+      font-size: 60px;
+      color: white;
+      background: #521644;
+      position: absolute;
+      border-radius: 1em;
+    }
+    #newgame_menu { top: 350px; left: 760px; }
+    #store_menu { top: 350px; left: 960px; }
+
+    #lastscore {
+      position: absolute;
+      top: 140px;
+      left: 740px;
+      font-family: sans-serif;
+      font-size: 50px;
+      color: yellow;
+    }
+	#totalscore{
+	position: absolute;
+      top: 200px;
+      left: 720px;
+      font-family: sans-serif;
+      font-size: 50px;
+      color: white;
+	}
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <h2 id="Name">Tyler Xvatayka</h2>
+    <button id="newgame_menu" onclick="window.location.href='main.html'">Play</button>
+    <button id="store_menu" onclick="window.location.href='store.html'">Store</button>
+    <h1 id="creator">Creator:</h1>
+    <h1 id="creatorname">@Durdv</h1>
+    <h2 id="Tyler">WE ARE TYLER🧼🥊</h2>
+    <h2 id="lastscore">Last Score: 0</h2>
+  </div>
+
+<h2 id="totalscore">Total Score: 0</h2>
+  <script>
+  const total = localStorage.getItem('totalScore') || 0;
+document.getElementById('totalscore').textContent = `Total Score: ${total}`;
+    const score = localStorage.getItem('lastScore') || 0;
+    document.getElementById('lastscore').textContent = `Last Score: ${score}`;
+  </script>
+</body>
+</html>

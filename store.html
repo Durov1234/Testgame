@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Store</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #3b1a69, #4b1773, #6e1b3e, #26086e);
+      background-size: 400% 670%;
+      animation: gradientFlow 35s ease infinite;;
+    }
+	@keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+	#Tyler{
+	position: absolute;
+      top: 550px;
+	  left:160px;
+      font-family: sans-serif;
+      font-size: 160px;
+	  color:white;
+	}
+	#creator{
+	position: absolute;
+      top: 805px;
+	  left:760px;
+      font-family: sans-serif;
+      font-size: 50px;
+	  color:white;
+	}
+	#Name{
+	position: absolute;
+      top: 10px;
+	  left:845px;
+      font-family: sans-serif;
+      font-size: 70px;
+	  color:white;
+	}
+	#creatorname{
+	position: absolute;
+      top: 820px;
+	  left:960px;
+      font-family: sans-serif;
+      font-size: 40px;
+	  color:white;
+	}
+	#newgame_menu{
+	
+	}
+	#store_menu{
+	top: 200px;
+	  left:960px;
+      font-family: sans-serif;
+      font-size: 60px;
+	  color:white;
+	  background:#521644;
+	  position: absolute;
+	  border-radius:1em;
+	}
+	#newgame_menu{
+	top: 200px;
+	  left:760px;
+      font-family: sans-serif;
+      font-size: 60px;
+	  color:white;
+	  background:#521644;
+	  position: absolute;
+	  border-radius:1em;
+	}
+	#trails{
+	background:#521644;
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	top: 25%;
+		border-radius: 40px;
+	}
+	#Tyler{
+	background:#521644;
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	top: 25%;
+	left: 1405px;
+	border-radius: 40px;
+	}
+	#list{
+	background:#521644;
+	width: 500px;
+	height: 350px;
+	position: absolute;
+	top: 35%;
+	left: 700px;
+	border-radius: 40px;
+	}
+	#star1{
+	heigth: 50px;
+	width:50px;
+	}
+	#star2{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 96px;
+	left: 0%;
+	}
+	#star3{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 144px;
+	left: 0%;
+	}
+	#star4{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 192px;
+	left: 0%;
+	}
+	#star5{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 245px;
+	left: 0%;
+	}
+	#star6{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 288px;
+	left: 0%;
+	}
+	#star7{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 0%;
+	left: 60%;
+	}
+	#star8{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 48px;
+	left: 60%;
+	}
+	#star9{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 96px;
+	left: 60%;
+	}
+	#star10{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 144px;
+	left: 60%;
+	}
+	#star11{
+	heigth: 50px;
+	width:50px;
+	position: absolute;
+	top: 48px;
+	left: 0%;
+	}
+	#ps1{
+	position: absolute;
+	top: 310px;
+	left: 750px;
+	color:white;
+	}
+	#ps2{
+	position: absolute;
+	top: 360px;
+	left: 750px;
+	color:white;
+	}
+	#ps3{
+	position: absolute;
+	top: 410px;
+	left: 750px;
+	color:white;
+	}
+	#ps4{
+	position: absolute;
+	top: 460px;
+	left: 750px;
+	color:white;
+	}
+	#ps5{
+	position: absolute;
+	top: 500px;
+	left: 750px;
+	color:white;
+	}
+	#ps6{
+	position: absolute;
+	top: 545px;
+	left: 750px;
+	color:white;
+	}
+	#ps7{
+	position: absolute;
+	top: 595px;
+	left: 750px;
+	color:white;
+	}
+	#ps8{
+	position: absolute;
+	top: 305px;
+	left: 1050px;
+	color:white;
+	}
+	#ps9{
+	position: absolute;
+	top: 355px;
+	left: 1050px;
+	color:white;
+	}
+	#ps10{
+	position: absolute;
+	top: 405px;
+	left: 1050px;
+	color:white;
+	}
+	#ps11{
+	position: absolute;
+	top: 465px;
+	left: 1050px;
+	color:white;
+	}
+	#bogat{
+	height:240px;
+	width:185px;
+	}
+	#bogatbig{
+	height:240px;
+	width:185px;
+	position:Absolute;
+	top:250px;
+	left:5px;
+	}
+	#bogatsell{
+	position: absolute;
+	top: 265px;
+	left: 1600px;
+	color:white;
+	font-family: sans-serif;
+      font-size: 60px;
+	}
+	#bogatbigsell{
+	position: absolute;
+	top: 505px;
+	left: 1600px;
+	color:white;
+	font-family: sans-serif;
+      font-size: 60px;
+	}
+	#blue{
+	position:absolute;
+	height:100px;
+	width:100px;
+	top:250px;
+	left:50px;
+	background:blue;
+	font-family: sans-serif;
+      font-size: 30px;
+	  border-radius: 1em;
+	  
+	}
+	#green{
+	position:absolute;
+	height:100px;
+	width:100px;
+	top:420px;
+	left:50px;
+	background:green;
+	font-family: sans-serif;
+      font-size: 30px;
+	  border-radius: 1em;
+	  
+	}
+	#gold{
+	position:absolute;
+	height:100px;
+	width:100px;
+	top:590px;
+	left:50px;
+	background:gold;
+	font-family: sans-serif;
+      font-size: 30px;
+	  border-radius: 1em;
+	  
+	}
+	#goldsled{
+	position:absolute;
+	font-family: sans-serif;
+      font-size: 40px;
+	  color:white;
+	  top:585px;
+	  left: 180px;
+	}
+	#greensled{
+	position:absolute;
+	font-family: sans-serif;
+      font-size: 40px;
+	  color:white;
+	  top:415px;
+	  left: 180px;
+	}
+	#bluesled{
+	position:absolute;
+	font-family: sans-serif;
+      font-size: 40px;
+	  color:white;
+	  top:245px;
+	  left: 180px;
+	}
+  </style>
+</head>
+<body>
+  <div id="trails"></div>
+  <div id="list"><div class="stars-image">
+  <img src="https://i.ibb.co/PZJ79DyP/result-2025-05-02-T214836-114.png" id="star1">
+  <img src="https://i.ibb.co/nq6TJWPY/result-2025-05-02-T214824-146.png" id="star2">
+  <img src="https://i.ibb.co/SDRV0NvR/result-2025-05-02-T214622-842.png" id="star3">
+  <img src="https://i.ibb.co/mVjbsNjP/result-2025-05-02-T214809-961.png" id="star4">
+  <img src="https://i.ibb.co/vC6TF49N/result-2025-05-02-T214711-338.png" id="star5">
+  <img src="https://i.ibb.co/FbcjnPvZ/result-2025-05-02-T214752-153.png" id="star6">
+  <img src="https://i.ibb.co/nMFPYBmR/result-2025-05-02-T214658-042.png" id="star7">
+  <img src="https://i.ibb.co/CpBf5ZHf/result-2025-05-02-T214734-427.png" id="star8">
+  <img src="https://i.ibb.co/vxcGVKG6/result-2025-05-02-T214644-650.png" id="star9">
+  <img src="https://i.ibb.co/KcN33TbV/result-2025-05-02-T214606-827.png" id="star10">
+  <img src="https://i.ibb.co/dwfT3RgY/result-2025-05-02-T214548-251.png" id="star11">
+  </div></div>
+  <div id="sell"><div class="sell-image">
+  <h1 id="ps1">10000</h1>
+  <h1 id="ps2">5000</h1>
+  <h1 id="ps3">500</h1>
+  <h1 id="ps4">500</h1>
+  <h1 id="ps5">100</h1>
+  <h1 id="ps6">10000</h1>
+  <h1 id="ps7">100</h1>
+  <h1 id="ps8">1000</h1>
+  <h1 id="ps9">500</h1>
+  <h1 id="ps10">5000</h1>
+  <h1 id="ps11">5000</h1>
+  </div></div>
+  <div id="Tyler">
+  <img src="https://i.ibb.co/d0kbXSP3/result-2025-05-03-T114130-847.png" id="bogat">
+  <img src="https://i.ibb.co/ynypRTJV/result-2025-05-03-T120043-936.png" id="bogatbig">
+  </div>
+  <h2 id="bogatsell">100,000</h2>
+  <h2 id="bogatbigsell">1,000,000</h2>
+  <div id="menu">
+  <h2 id="Name">Store</h2>
+  <button id="newgame_menu" onclick="window.location.href='main.html'">Play</button>
+  <button id="store_menu" onclick="window.location.href='menu.html'">Menu</button>
+  <h1 id="creator">Creator:</h1>
+  <h1 id="creatorname">@Durdv</h1>
+</div>
+<div id="blue"></div>
+<div id="green"></div>
+<div id="gold"></div>
+<h2 id="bluesled">COMING SOON</h2>
+
+<script>
+  document.getElementById('bogat').addEventListener('click', () => {
+    const newImageSrc = 'https://i.ibb.co/LhqHYnw0/result-2025-05-03-T114130-847-2.png';
+    localStorage.setItem('selectedImage', newImageSrc);
+    alert('Selected!');
+  });
+  document.getElementById('bogatbig').addEventListener('click', () => {
+    const newImageSrc = 'https://i.ibb.co/ynypRTJV/result-2025-05-03-T120043-936.png';
+    localStorage.setItem('selectedImage', newImageSrc);
+    alert('Selected!');
+  });
+  window.addEventListener('DOMContentLoaded', () => {
+    let total = 0;
+
+    for (let i = 1; i <= 11; i++) {
+      const el = document.getElementById(`ps${i}`);
+      if (el) {
+        const val = parseInt(el.textContent.replace(/[^\d]/g, ''));
+        if (!isNaN(val)) {
+          total += val;
+        }
+      }
+    }
+
+    const totalScoreElement = document.getElementById("totalscore");
+    if (totalScoreElement) {
+      totalScoreElement.textContent = "Total Score: " + total.toLocaleString();
+    }
+  });
+</script>
+</body>
+</html>
